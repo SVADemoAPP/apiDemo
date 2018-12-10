@@ -1,0 +1,15 @@
+{
+	"sProcessing": "处理中...",
+	"sLengthMenu": "展示 _MENU_ 条记录",
+	"sZeroRecords": "没有数据",
+	"sInfo": "一共显示 _TOTAL_ 条记录 (_START_ 到 _END_)",
+	"sInfoEmpty": "没有数据显示",
+	"sInfoFiltered": " - 从 _MAX_ 条记录中筛选",
+	"sSearch": "筛选记录:",
+	"oPaginate": {
+		"sFirst":    "首页",
+		"sPrevious": "上一页",
+		"sNext":     "下一页",
+		"sLast":     "尾页"
+	}
+}

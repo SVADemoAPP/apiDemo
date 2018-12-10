@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bis.dao.AmqpDao">
+
+    <insert id="saveAmqpData">
+        INSERT INTO ${tableName}
+            (idType,timestamp,time_sva,dataType,x,y,mapId,userId) 
+        VALUES (
+            #{loc.idType},
+            #{loc.timestamp},
+            #{loc.time_sva},
+            #{loc.dataType},
+            #{loc.x},
+            #{loc.y},
+            #{loc.mapId},
+            #{loc.userID}
+
+        )
+    </insert>
+    
+    <select id="checkPhoneIsExisted" resultType="int">
+        SELECT count(userId)
+        FROM bi_locationphone 
+        WHERE userId = #{value}
+    </select>
+    
+    <update id="updatePhoneLocation">
+        UPDATE bi_locationphone
+        SET 
+            IdType = #{idType}, 
+            timestamp = #{timestamp},
+            time_sva = #{time_sva},
+            datatype = #{dataType},
+            x = #{x}, 
+            y = #{y},
+            mapId = #{mapId} 
+        WHERE userId = #{userID}
+    </update>
+    
+    <insert id="svaPrru">
+        INSERT INTO prrusignal
+            (enbid,userId,gpp,rsrp,timestamp)
+        VALUES (
+            #{enbid},
+            #{userId},
+            #{gpp},
+            #{rsrp},
+            #{time_sva}
+        )
+    </insert>
+    
+    <insert id="svaGeofencing">
+        INSERT INTO geofencing
+            (IdType,userid,mapid,zoneid,enter,timestamp,time_local)
+        VALUES (
+            #{idType},
+            #{userId},
+            #{mapId},
+            #{zoneId},
+            #{zoneEvent},
+            #{timestamp},
+            #{time_sva}
+        )
+    </insert>
+
+    <select id="getActiveSva" resultType="SvaModel">
+        SELECT * FROM 
+            svalist a left join svastoremap b on a.id = b.svaId 
+        WHERE a.status = 1
+    </select>
+    
+    <update id="insertSql">
+        ${value}
+    </update>        
+</mapper>

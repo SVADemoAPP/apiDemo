@@ -1,0 +1,5 @@
+﻿23|ipv4|2|ACR|ECI|男|(20,30]|lac1|lac2|居住地CI|lac3|工作地CI|51-100
+23|2|2|ACR|ECI|男|26|lac1|lac2|居住地CI|lac3|工作地CI|45
+23|3|2|ACR|ECI|男|26|lac1|lac2|居住地CI|lac3|工作地CI|45
+23|4|2|ACR|ECI|男|26|lac1|lac2|居住地CI|lac3|工作地CI|45
+23|5|2|ACR|ECI|男|26|lac1|lac2|居住地CI|lac3|工作地CI|45

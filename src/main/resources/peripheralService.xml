@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PeripheryS>
+	<periphery >
+		<id>1</id>
+		<category>超市</category>
+		<shopName>红旗超市（国腾园分场店）</shopName>
+		<shopAddress>高新区西部园区西芯大道3号</shopAddress>
+		<distance>121m</distance>
+		<peripheryCategory>超市</peripheryCategory>
+		<path>1.png</path>
+		<maxPath>11.png</maxPath>
+		<phoneNumber>(028)80806397</phoneNumber>
+		<businessHours>8:00-22:00</businessHours>
+		<storeId>323</storeId>
+	</periphery>
+	<periphery >
+		<id>2</id>
+		<category>银行</category>
+		<shopName>中国工商银行（西芯大道支行）</shopName>
+		<shopAddress>高新区西部园区西芯大道3号</shopAddress>
+		<distance>98m</distance>
+		<peripheryCategory>银行</peripheryCategory>
+		<path>2.png</path>
+		<maxPath>22.png</maxPath>
+		<phoneNumber>xxxxxxxxxxx</phoneNumber>
+		<businessHours>8:00-22:00</businessHours>
+        <storeId>1</storeId>		
+	</periphery>
+	<periphery id="3">
+		<id>3</id>
+		<category>小吃</category>
+		<shopName>大邑肥肠血旺</shopName>
+		<shopAddress>保利新天地</shopAddress>
+		<distance>233m</distance>
+		<peripheryCategory>小吃</peripheryCategory>
+		<path>3.png</path>
+		<maxPath>33.png</maxPath>
+		<phoneNumber>xxxxxxxxxxx</phoneNumber>
+		<businessHours>8:00-22:00</businessHours>
+        <storeId>1</storeId>		
+	</periphery>
+	<periphery id="4">
+		<id>4</id>
+		<category>便利店</category>
+		<shopName>易捷便利店（天辰路店）</shopName>
+		<shopAddress>天辰路39号附近</shopAddress>
+		<distance>85m</distance>
+		<peripheryCategory>便利店</peripheryCategory>
+		<path>4.png</path>
+		<maxPath>44.png</maxPath>
+		<phoneNumber>xxxxxxxxxxx</phoneNumber>
+		<businessHours>8:00-22:00</businessHours>
+        <storeId>1</storeId>		
+	</periphery>
+	<periphery id="5">
+		<id>5</id>
+		<category>披萨店</category>
+		<shopName>Pizza 4U披萨（百草路店）</shopName>
+		<shopAddress>天高新西区天目路51号</shopAddress>
+		<distance>1.03KM</distance>
+		<peripheryCategory>披萨店</peripheryCategory>
+		<path>5.png</path>
+		<maxPath>55.png</maxPath>
+		<phoneNumber>xxxxxxxxxxx</phoneNumber>
+		<businessHours>8:00-22:00</businessHours>
+        <storeId>1</storeId>		
+	</periphery>
+    <periphery id="6">
+        <id>6</id>
+        <category>银行</category>
+        <shopName>中国农业银行（西芯大道支行）</shopName>
+        <shopAddress>天高新西区天目路51号</shopAddress>
+        <distance>536m</distance>
+        <peripheryCategory>银行</peripheryCategory>
+        <path>6.png</path>
+        <maxPath>66.png</maxPath>
+        <phoneNumber>xxxxxxxxxxx</phoneNumber>
+        <businessHours>8:00-22:00</businessHours>
+        <storeId>1</storeId>        
+    </periphery>
+    <periphery id="7">
+        <id>7</id>
+        <category>超市</category>
+        <shopName>舞东风（百草路店）</shopName>
+        <shopAddress>高新区西部园区西芯大道8号</shopAddress>
+        <distance>235m</distance>
+        <peripheryCategory>超市</peripheryCategory>
+        <path>7.png</path>
+        <maxPath>77.png</maxPath>
+        <phoneNumber>xxxxxxxxxxx</phoneNumber>
+        <businessHours>8:00-22:00</businessHours>
+        <storeId>2</storeId>        
+    </periphery>    	
+</PeripheryS>
