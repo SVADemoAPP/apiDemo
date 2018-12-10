@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Non-anonymousConfiguration>
+		<id>1</id>
+		<ip>182.138.104.35</ip>
+		<token_port>9001</token_port>
+		<broker_port>4703</broker_port>
+		<name>app0</name>
+		<password>User@123456</password>
+		<status>1</status>
+		<subscribe_type>0</subscribe_type>
+		<ip_type>IP</ip_type>
+	</Non-anonymousConfiguration>
+	<SpecifiesConfiguration>
+		<id1>1111</id1>
+		<ip1>182.138.104.35</ip1>
+		<token_port1>9001</token_port1>
+		<broker_port1>4703</broker_port1>
+		<name1>app1</name1>
+		<password1>User@123456</password1>
+		<status1>1</status1>
+		<subscribe_type1>2</subscribe_type1>
+		<ip_type1>IP</ip_type1>
+	</SpecifiesConfiguration>
+</Configuration>
+

@@ -1,0 +1,108 @@
+body{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	font-family: "Arial";
+}
+.section1{
+
+}
+.section1_left{
+	float: left;
+	background: url(../image/home-2.png);
+}
+.section1_left .logo{
+	height: 50px;
+	position: relative;
+	left: 50%;
+	margin: 5% 0 15% -19%;
+}
+.section1_left .logo i{
+	width: 220px;
+	height: 80px;
+	
+	background-size: cover;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.section1_left .logo span{
+	font-size: 55px;
+	position: absolute;
+	left: 110px;
+	top: 0;
+	line-height: 80px;
+	color: #fff;
+}
+.login{
+	width: 80%;
+	height: 180px;
+	margin: 0 auto;
+}
+.userIcon, .passwordIcon{
+	display: block;
+	width: 31px;
+	height: 33px;
+	margin: 0 auto;
+}
+.userIcon{
+	background: url(../image/home-3.png) no-repeat;
+}
+.passwordIcon{
+	background: url(../image/home-4.png) no-repeat;
+}
+.loginBtn{
+	display: block;
+	width: 40%;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	background: #5c9efc;
+	border: 0;
+	font-size: 40px;
+	color: #fff;
+	margin: 8% 30%;;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px 2px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+.loginBtn:hover{
+	color: #fff;
+	text-decoration: none;
+}
+.section1_right{
+	width: 1300px;
+	height: 100%;
+	float: right;
+	background: url(../image/main.jpg);
+    background-size: cover;
+	position: relative;
+}
+.section1_right .content{
+	position: absolute;
+	left: 60px;
+	bottom: 200px;
+}
+.section1_right .content h3{
+	font-size: 48px;
+	color: #fff;
+}
+.section1_right .content p{
+	font-size: 24px;
+	color: #dcdcdc;
+}
+.login .input-group-addon{
+	background: transparent;
+	border: 2px solid #e7e7e2;
+	width: 80px;
+}
+.login .form-control{
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	background: transparent;
+	border: 2px solid #e7e7e2;
+	border-left: 0;
+	font-size: 30px;
+	color: #dcdcdc;
+}
