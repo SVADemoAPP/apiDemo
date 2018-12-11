@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -81,8 +82,8 @@ public class SvaService extends HttpsService {
             LOG.debug("subscripiton token got:"+token);
             
             url = "https://" + sva.getIp() + ":" + sva.getPort()
-                        + "/enabler/catalog/locationstreamreg/json/v1.0";
-            content = "{\"APPID\":\"" + sva.getUsername() + "\"" + "}";
+                        + "/enabler/getwirelessinfo/json/v1.0";
+            content = "{\"CELLID\":\"" + sva.getCellId() + "\"" + "}";
             LOG.debug("subscription param:"+content);
             // 获取订阅ID
             Map<String,String> subResult = HttpsService.httpsPost(url, content, charset,"POST", token, svaSSLVersion);
@@ -104,5 +105,25 @@ public class SvaService extends HttpsService {
         }
         
         return result;
+    }
+    
+    public String getDataFromSvaTest(SvaModel sva){
+    	Random random1 = new Random(100);
+    	int a = random1.nextInt();
+    	float c = random1.nextFloat();
+    	
+    	Random random2 = new Random(10);
+    	int b = random2.nextInt();
+    	float d = random2.nextFloat();
+    	
+    	Random random3 = new Random(1);
+    	int e = random3.nextInt();
+    	
+    	String result = "{\"ucDLPrbRate\":"+a
+    			+",\"ucULAvgMcs\":"+b
+    			+",\"ucULPrbRate\":"+c
+    			+",\"ulULAvgFeelSpeed\":"+d
+    			+",\"usActiveUserCnt\":"+e+"}";
+    	return result;
     }
 }
