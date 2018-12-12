@@ -55,7 +55,7 @@ public class HomeController {
     @ResponseBody
     public Map<String, Object> getData(@RequestBody SvaModel requestModel)
     {
-    	String res = service.getDataFromSvaTest(requestModel);
+    	String res = service.getDataFromSva(requestModel);
     	Map<String, Object> map = new HashMap<String, Object>();
     	map.put("data", res);
     	return map;

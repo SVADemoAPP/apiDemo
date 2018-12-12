@@ -11,12 +11,6 @@ var upUsageChart = null,
 	upAvgSense = null,
 	upMCSAvg = null;
 
-var data1 = [],
-	data2 = [],
-	data3 = [],
-	data4 = [],
-	data5 = [];
-
 var refreshInter = null;
 
 var Home = function() {
@@ -48,9 +42,10 @@ var Home = function() {
 		var temp = JSON.parse(data);
 		for(var k in temp){
 			var v = Math.round(temp[k] * 100) / 100;
-			result[k] = {name:dateFormat(new Date(), "yyyy/MM/dd HH:mm:ss"), value:v, append:""};
+			var d = new Date();
+			result[k] = {name:dateFormat(d, "yyyy/MM/dd HH:mm:ss"), value:v, append:"", time:d.getTime()};
 			if(k == "ucDLPrbRate" || k == "ucULPrbRate"){
-				result[k][append] = "%";
+				result[k]["append"] = "%";
 			}
 		}
 		
@@ -59,57 +54,64 @@ var Home = function() {
 	
 	var refresh = function(){
 		// 获取数据
-		$.post("/mie/home/getData",{ip:ip, port:port, username:username, password:password, cellId:cellId},function(data){
-			if(data.data){
-				var fresh = formatData(data.data);
-				
-				$("#upUsage").html(fresh.upUsage);
-				$("#downUsage").html(fresh.downUsage);
-				$("#activeUser").html(fresh.activeUser);
-				$("#upUserSense").html(fresh.upAvgSense);
-				$("#upMCS").html(fresh.upMCSAvg);
-				
-				if(data1.length > 1000/rate){
-					data1.shift();
-					data2.shift();
-					data3.shift();
-					data4.shift();
-					data5.shift();
+		var param = {ip:ip, port:port, username:username, password:password, cellId:cellId};
+		$.ajax({
+            "dataType": 'json', 
+            'contentType' : 'application/json',
+            "type": "POST", 
+            "url": "/mie/home/getData", 
+            "data": JSON.stringify(param), 
+            "success": function(res){
+				if(res.data){
+					var fresh = formatData(res.data);
+					
+					$("#upUsage").html(fresh.ucULPrbRate.value + fresh.ucULPrbRate.append);
+					$("#downUsage").html(fresh.ucDLPrbRate.value + fresh.ucDLPrbRate.append);
+					$("#activeUser").html(fresh.usActiveUserCnt.value + fresh.usActiveUserCnt.append);
+					$("#upUserSense").html(fresh.ulULAvgFeelSpeed.value + fresh.ulULAvgFeelSpeed.append);
+					$("#upMCS").html(fresh.ucULAvgMcs.value + fresh.ucULAvgMcs.append);
+					
+					var op1 = upUsageChart.getOption(),
+						op2 = downUsageChart.getOption(),
+						op3 = activeUser.getOption(),
+						op4 = upAvgSense.getOption(),
+						op5 = upMCSAvg.getOption();
+					
+					if(op1.xAxis[0].data.length >= 1000/parseInt(rate)){
+						op1.series[0].data.shift();
+						op2.series[0].data.shift();
+						op3.series[0].data.shift();
+						op4.series[0].data.shift();
+						op5.series[0].data.shift();
+						
+						op1.xAxis[0].data.shift();
+						op2.xAxis[0].data.shift();
+						op3.xAxis[0].data.shift();
+						op4.xAxis[0].data.shift();
+						op5.xAxis[0].data.shift();
+					}
+					
+					op1.xAxis[0].data.push(fresh.ucULPrbRate.name);
+					op1.series[0].data.push(fresh.ucULPrbRate.value);
+					op2.xAxis[0].data.push(fresh.ucDLPrbRate.name);
+					op2.series[0].data.push(fresh.ucDLPrbRate.value);
+					op3.xAxis[0].data.push(fresh.usActiveUserCnt.name);
+					op3.series[0].data.push(fresh.usActiveUserCnt.value);
+					op4.xAxis[0].data.push(fresh.ulULAvgFeelSpeed.name);
+					op4.series[0].data.push(fresh.ulULAvgFeelSpeed.value);
+					op5.xAxis[0].data.push(fresh.ucULAvgMcs.name);
+					op5.series[0].data.push(fresh.ucULAvgMcs.value);
+					
+					upUsageChart.setOption(op1); 
+					downUsageChart.setOption(op2); 
+					activeUser.setOption(op3); 
+					upAvgSense.setOption(op4); 
+					upMCSAvg.setOption(op5); 
+					
+				}else{
+					alert("no data");
 				}
-				data1.push(fresh.upUsage);
-				data2.push(fresh.downUsage);
-				data3.push(fresh.activeUser);
-				data4.push(fresh.upAvgSense);
-				data5.push(fresh.upMCSAvg);
-				upUsageChart.setOption({
-			        series: [{
-			            data: data1
-			        }]
-			    }); 
-				downUsageChart.setOption({
-			        series: [{
-			            data: data2
-			        }]
-			    }); 
-				activeUser.setOption({
-			        series: [{
-			            data: data3
-			        }]
-			    }); 
-				upAvgSense.setOption({
-			        series: [{
-			            data: data4
-			        }]
-			    }); 
-				upMCSAvg.setOption({
-			        series: [{
-			            data: data5
-			        }]
-			    }); 
-				
-			}else{
-				alert("no data");
-			}
+            }
 		});
 	};
 	
@@ -120,94 +122,103 @@ var Home = function() {
 		upAvgSense = echarts.init(document.getElementById('upUserSenseChart')),
 		upMCSAvg = echarts.init(document.getElementById('UpMCSChart'));
 		// 获取数据
-		$.post("/mie/home/getData",{ip:ip, port:port, username:username, password:password, cellId:cellId},function(data){
-			if(data.data){
-				var fresh = formatData(data.data);
-				
-				$("#upUsage").html(fresh.upUsage);
-				$("#downUsage").html(fresh.downUsage);
-				$("#activeUser").html(fresh.activeUser);
-				$("#upUserSense").html(fresh.upAvgSense);
-				$("#upMCS").html(fresh.upMCSAvg);
-				
-				data1.push(fresh.upUsage);
-				data2.push(fresh.downUsage);
-				data3.push(fresh.activeUser);
-				data4.push(fresh.upAvgSense);
-				data5.push(fresh.upMCSAvg);
-				
-				var option = {
-					    tooltip: {
-					        trigger: 'axis',
-					        formatter: function (params) {
-					            params = params[0];
-					            return params.name + ' : ' + params.value + params.append;
-					        },
-					        axisPointer: {
-					            animation: false
-					        }
-					    },
-					    xAxis: {
-					        type: 'time',
-					        splitLine: {
-					            show: false
-					        }
-					    },
-					    yAxis: {
-					        type: 'value',
-					        boundaryGap: [0, '100%'],
-					        splitLine: {
-					            show: false
-					        }
-					    },
-					    series: [{
-					        type: 'line',
-					        showSymbol: false,
-					        hoverAnimation: false,
-					        lineStyle: {
-					            color:"#61a0a8",
-					            width:1
-					        },
-					        areaStyle: {
-					            color:"#61a0a8",
-					            opacity:0.5
-					        }
-					    }]
-					};
-				
-				upUsageChart.setOption({
-			        series: [{
-			            data: data1
-			        }]
-			    }); 
-				downUsageChart.setOption({
-			        series: [{
-			            data: data2
-			        }]
-			    }); 
-				activeUser.setOption({
-			        series: [{
-			            data: data3
-			        }]
-			    }); 
-				upAvgSense.setOption({
-			        series: [{
-			            data: data4
-			        }]
-			    }); 
-				upMCSAvg.setOption({
-			        series: [{
-			            data: data5
-			        }]
-			    }); 
-				
-				refreshInter = setInterval(function(){
-					refresh();
-				}, parseInt(rate)*1000);
-				
-			}else{
-				alert("no data");
-			}
+		var param = {ip:ip, port:port, username:username, password:password, cellId:cellId};
+		$.ajax({
+            "dataType": 'json', 
+            'contentType' : 'application/json',
+            "type": "POST", 
+            "url": "/mie/home/getData", 
+            "data": JSON.stringify(param), 
+            "success": function(res){
+				if(res.data){
+					var fresh = formatData(res.data);
+					
+					$("#upUsage").html(fresh.ucULPrbRate.value + fresh.ucULPrbRate.append);
+					$("#downUsage").html(fresh.ucDLPrbRate.value + fresh.ucDLPrbRate.append);
+					$("#activeUser").html(fresh.usActiveUserCnt.value + fresh.usActiveUserCnt.append);
+					$("#upUserSense").html(fresh.ulULAvgFeelSpeed.value + fresh.ulULAvgFeelSpeed.append);
+					$("#upMCS").html(fresh.ucULAvgMcs.value + fresh.ucULAvgMcs.append);
+					
+					var option = {
+						    tooltip: {
+						        trigger: 'axis',
+						        formatter: function (params) {
+						            params = params[0];
+						            return params.name + ' : ' + params.value + params.data.append;
+						        },
+						        axisPointer: {
+						            animation: false
+						        }
+						    },
+						    xAxis: {
+						        type: 'category',
+						        splitLine: {
+						            show: false
+						        },
+						        data:[fresh.ucULPrbRate.name]
+						    },
+						    yAxis: {
+						        type: 'value',
+						        boundaryGap: [0, '100%'],
+						        splitLine: {
+						            show: false
+						        }
+						    },
+						    series: [{
+						        type: 'line',
+						        showSymbol: false,
+						        hoverAnimation: false,
+						        lineStyle: {
+						            color:"#61a0a8",
+						            width:1
+						        },
+						        areaStyle: {
+						            color:"#61a0a8",
+						            opacity:0.5
+						        }
+						    }]
+						};
+					
+					upUsageChart.setOption(option);
+					downUsageChart.setOption(option);
+					activeUser.setOption(option);
+					upAvgSense.setOption(option);
+					upMCSAvg.setOption(option);
+					
+					upUsageChart.setOption({
+				        series: [{
+				            data: [fresh.ucULPrbRate.value]
+				        }]
+				    }); 
+					downUsageChart.setOption({
+				        series: [{
+				            data: [fresh.ucDLPrbRate.value]
+				        }]
+				    }); 
+					activeUser.setOption({
+				        series: [{
+				            data: [fresh.usActiveUserCnt.value]
+				        }]
+				    }); 
+					upAvgSense.setOption({
+				        series: [{
+				            data: [fresh.ulULAvgFeelSpeed.value]
+				        }]
+				    }); 
+					upMCSAvg.setOption({
+				        series: [{
+				            data: [fresh.ucULAvgMcs.value]
+				        }]
+				    }); 
+					
+					refreshInter = setInterval(function(){
+						refresh();
+					}, parseInt(rate)*1000);
+					
+				}else{
+					alert("no data");
+				}
+            }
 		});
 	}
 	

@@ -109,15 +109,15 @@ public class SvaService extends HttpsService {
     
     public String getDataFromSvaTest(SvaModel sva){
     	Random random1 = new Random(100);
-    	int a = random1.nextInt();
-    	float c = random1.nextFloat();
+    	int a = Math.abs(random1.nextInt());
+    	float c = Math.abs(random1.nextFloat());
     	
     	Random random2 = new Random(10);
-    	int b = random2.nextInt();
-    	float d = random2.nextFloat();
+    	int b = Math.abs(random2.nextInt());
+    	float d = Math.abs(random2.nextFloat());
     	
     	Random random3 = new Random(1);
-    	int e = random3.nextInt();
+    	int e = Math.abs(random3.nextInt());
     	
     	String result = "{\"ucDLPrbRate\":"+a
     			+",\"ucULAvgMcs\":"+b

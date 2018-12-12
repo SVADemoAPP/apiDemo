@@ -367,7 +367,7 @@
 	<script src="../plugins/jquery-1.10.2.min.js"></script>
 	<!-- Bootstrap plugins -->
 	<script src="../plugins/bootstrap.min.js"></script>
-	<script src="../plugins/echarts3/echarts.min.js"></script>
+	<script src="../plugins/echarts3/echarts4.min.js"></script>
 	<script type="text/javascript" src="../js/util.js"></script>
 	<script type="text/javascript" src="../js/home.js"></script>
 	<script type="text/javascript">
