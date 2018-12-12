@@ -62,6 +62,14 @@
 	    width: 80px;
 	    margin-top: 6px;
 	}
+	
+	.logoDiv{
+	    font-size: 35px;
+        height: 40px;
+        width: 50px;
+        float: left;
+        padding: 15px 0 0 15px;
+	}
 </style>
 </head>
 <body>
@@ -73,8 +81,7 @@
 					<a class="navbar-brand" href="../home/home"> 
 						<img src="<c:url value='/images/huawei.png'/>"
 						style="margin: 5px 5px 5px 15px; height: 35px;float:left;"></img>
-						<img src="<c:url value='/images/demo.png'/>"
-						style="margin: 5px; height: 35px;float:left"></img>
+						<div class="logoDiv">DIS</div>
 					</a>
 				</div>
 				<nav class="top-nav" role="navigation">

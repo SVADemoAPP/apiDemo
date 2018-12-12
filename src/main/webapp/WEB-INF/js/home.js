@@ -92,15 +92,15 @@ var Home = function() {
 					}
 					
 					op1.xAxis[0].data.push(fresh.ucULPrbRate.name);
-					op1.series[0].data.push(fresh.ucULPrbRate.value);
+					op1.series[0].data.push(fresh.ucULPrbRate);
 					op2.xAxis[0].data.push(fresh.ucDLPrbRate.name);
-					op2.series[0].data.push(fresh.ucDLPrbRate.value);
+					op2.series[0].data.push(fresh.ucDLPrbRate);
 					op3.xAxis[0].data.push(fresh.usActiveUserCnt.name);
-					op3.series[0].data.push(fresh.usActiveUserCnt.value);
+					op3.series[0].data.push(fresh.usActiveUserCnt);
 					op4.xAxis[0].data.push(fresh.ulULAvgFeelSpeed.name);
-					op4.series[0].data.push(fresh.ulULAvgFeelSpeed.value);
+					op4.series[0].data.push(fresh.ulULAvgFeelSpeed);
 					op5.xAxis[0].data.push(fresh.ucULAvgMcs.name);
-					op5.series[0].data.push(fresh.ucULAvgMcs.value);
+					op5.series[0].data.push(fresh.ucULAvgMcs);
 					
 					upUsageChart.setOption(op1); 
 					downUsageChart.setOption(op2); 
@@ -116,11 +116,13 @@ var Home = function() {
 	};
 	
 	var initChart = function(){
-		upUsageChart = echarts.init(document.getElementById('upUsageChart')),
-		downUsageChart = echarts.init(document.getElementById('downUsageChart')),
-		activeUser = echarts.init(document.getElementById('activeUserChart')),
-		upAvgSense = echarts.init(document.getElementById('upUserSenseChart')),
-		upMCSAvg = echarts.init(document.getElementById('UpMCSChart'));
+		if(!upUsageChart){
+			upUsageChart = echarts.init(document.getElementById('upUsageChart')),
+			downUsageChart = echarts.init(document.getElementById('downUsageChart')),
+			activeUser = echarts.init(document.getElementById('activeUserChart')),
+			upAvgSense = echarts.init(document.getElementById('upUserSenseChart')),
+			upMCSAvg = echarts.init(document.getElementById('UpMCSChart'));
+		}
 		// 获取数据
 		var param = {ip:ip, port:port, username:username, password:password, cellId:cellId};
 		$.ajax({
@@ -187,27 +189,27 @@ var Home = function() {
 					
 					upUsageChart.setOption({
 				        series: [{
-				            data: [fresh.ucULPrbRate.value]
+				            data: [fresh.ucULPrbRate]
 				        }]
 				    }); 
 					downUsageChart.setOption({
 				        series: [{
-				            data: [fresh.ucDLPrbRate.value]
+				            data: [fresh.ucDLPrbRate]
 				        }]
 				    }); 
 					activeUser.setOption({
 				        series: [{
-				            data: [fresh.usActiveUserCnt.value]
+				            data: [fresh.usActiveUserCnt]
 				        }]
 				    }); 
 					upAvgSense.setOption({
 				        series: [{
-				            data: [fresh.ulULAvgFeelSpeed.value]
+				            data: [fresh.ulULAvgFeelSpeed]
 				        }]
 				    }); 
 					upMCSAvg.setOption({
 				        series: [{
-				            data: [fresh.ucULAvgMcs.value]
+				            data: [fresh.ucULAvgMcs]
 				        }]
 				    }); 
 					
@@ -264,6 +266,7 @@ var Home = function() {
         		rate = rateTemp;
         		
         		// 刷新
+        		/*
         		if(refreshInter){
         			clearInterval(refreshInter);
         			refreshInter = setInterval(function(){
@@ -271,7 +274,12 @@ var Home = function() {
     				}, parseInt(rate)*1000);
         		}else{
         			initChart();
+        		}*/
+        		
+        		if(refreshInter){
+        			clearInterval(refreshInter);
         		}
+        		initChart();
         	}
         });
         
