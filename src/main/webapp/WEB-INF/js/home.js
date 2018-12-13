@@ -40,12 +40,16 @@ var Home = function() {
 		var result = {};
 		// 转化成JSON对象
 		var temp = JSON.parse(data);
+		var d = new Date();
 		for(var k in temp){
 			var v = Math.round(temp[k] * 100) / 100;
-			var d = new Date();
 			result[k] = {name:dateFormat(d, "yyyy/MM/dd HH:mm:ss"), value:v, append:"", time:d.getTime()};
-			if(k == "ucDLPrbRate" || k == "ucULPrbRate"){
+			if(k == "ucULRbRate"){
 				result[k]["append"] = "%";
+			}else if(k == "ulULCellTraffic" || k == "ulULActiveUserAvgRate"){
+				result[k]["append"] = "kbps";
+			}else if(k == "ULCellInterference"){
+				result[k]["append"] = "dBm";
 			}
 		}
 		
@@ -65,11 +69,11 @@ var Home = function() {
 				if(res.data){
 					var fresh = formatData(res.data);
 					
-					$("#upUsage").html(fresh.ucULPrbRate.value + fresh.ucULPrbRate.append);
-					$("#downUsage").html(fresh.ucDLPrbRate.value + fresh.ucDLPrbRate.append);
-					$("#activeUser").html(fresh.usActiveUserCnt.value + fresh.usActiveUserCnt.append);
-					$("#upUserSense").html(fresh.ulULAvgFeelSpeed.value + fresh.ulULAvgFeelSpeed.append);
+					$("#downUsage").html(fresh.ulULCellTraffic.value + fresh.ulULCellTraffic.append);
+					$("#activeUser").html(fresh.ULCellInterference.value + fresh.ULCellInterference.append);
+					$("#upUserSense").html(fresh.ulULActiveUserAvgRate.value + fresh.ulULActiveUserAvgRate.append);
 					$("#upMCS").html(fresh.ucULAvgMcs.value + fresh.ucULAvgMcs.append);
+					$("#upUsage").html(fresh.ucULRbRate.value + fresh.ucULRbRate.append);
 					
 					var op1 = upUsageChart.getOption(),
 						op2 = downUsageChart.getOption(),
@@ -91,14 +95,14 @@ var Home = function() {
 						op5.xAxis[0].data.shift();
 					}
 					
-					op1.xAxis[0].data.push(fresh.ucULPrbRate.name);
-					op1.series[0].data.push(fresh.ucULPrbRate);
-					op2.xAxis[0].data.push(fresh.ucDLPrbRate.name);
-					op2.series[0].data.push(fresh.ucDLPrbRate);
-					op3.xAxis[0].data.push(fresh.usActiveUserCnt.name);
-					op3.series[0].data.push(fresh.usActiveUserCnt);
-					op4.xAxis[0].data.push(fresh.ulULAvgFeelSpeed.name);
-					op4.series[0].data.push(fresh.ulULAvgFeelSpeed);
+					op1.xAxis[0].data.push(fresh.ucULRbRate.name);
+					op1.series[0].data.push(fresh.ucULRbRate);
+					op2.xAxis[0].data.push(fresh.ulULCellTraffic.name);
+					op2.series[0].data.push(fresh.ulULCellTraffic);
+					op3.xAxis[0].data.push(fresh.ULCellInterference.name);
+					op3.series[0].data.push(fresh.ULCellInterference);
+					op4.xAxis[0].data.push(fresh.ulULActiveUserAvgRate.name);
+					op4.series[0].data.push(fresh.ulULActiveUserAvgRate);
 					op5.xAxis[0].data.push(fresh.ucULAvgMcs.name);
 					op5.series[0].data.push(fresh.ucULAvgMcs);
 					
@@ -135,11 +139,11 @@ var Home = function() {
 				if(res.data){
 					var fresh = formatData(res.data);
 					
-					$("#upUsage").html(fresh.ucULPrbRate.value + fresh.ucULPrbRate.append);
-					$("#downUsage").html(fresh.ucDLPrbRate.value + fresh.ucDLPrbRate.append);
-					$("#activeUser").html(fresh.usActiveUserCnt.value + fresh.usActiveUserCnt.append);
-					$("#upUserSense").html(fresh.ulULAvgFeelSpeed.value + fresh.ulULAvgFeelSpeed.append);
+					$("#downUsage").html(fresh.ulULCellTraffic.value + fresh.ulULCellTraffic.append);
+					$("#activeUser").html(fresh.ULCellInterference.value + fresh.ULCellInterference.append);
+					$("#upUserSense").html(fresh.ulULActiveUserAvgRate.value + fresh.ulULActiveUserAvgRate.append);
 					$("#upMCS").html(fresh.ucULAvgMcs.value + fresh.ucULAvgMcs.append);
+					$("#upUsage").html(fresh.ucULRbRate.value + fresh.ucULRbRate.append);
 					
 					var option = {
 						    tooltip: {
@@ -157,7 +161,7 @@ var Home = function() {
 						        splitLine: {
 						            show: false
 						        },
-						        data:[fresh.ucULPrbRate.name]
+						        data:[fresh.ucULRbRate.name]
 						    },
 						    yAxis: {
 						        type: 'value',
@@ -181,35 +185,35 @@ var Home = function() {
 						    }]
 						};
 					
-					upUsageChart.setOption(option);
 					downUsageChart.setOption(option);
 					activeUser.setOption(option);
 					upAvgSense.setOption(option);
 					upMCSAvg.setOption(option);
+					upUsageChart.setOption(option);
 					
-					upUsageChart.setOption({
-				        series: [{
-				            data: [fresh.ucULPrbRate]
-				        }]
-				    }); 
 					downUsageChart.setOption({
 				        series: [{
-				            data: [fresh.ucDLPrbRate]
+				            data: [fresh.ulULCellTraffic]
 				        }]
 				    }); 
 					activeUser.setOption({
 				        series: [{
-				            data: [fresh.usActiveUserCnt]
+				            data: [fresh.ULCellInterference]
 				        }]
 				    }); 
 					upAvgSense.setOption({
 				        series: [{
-				            data: [fresh.ulULAvgFeelSpeed]
+				            data: [fresh.ulULActiveUserAvgRate]
 				        }]
 				    }); 
 					upMCSAvg.setOption({
 				        series: [{
 				            data: [fresh.ucULAvgMcs]
+				        }]
+				    }); 
+					upUsageChart.setOption({
+				        series: [{
+				            data: [fresh.ucULRbRate]
 				        }]
 				    }); 
 					

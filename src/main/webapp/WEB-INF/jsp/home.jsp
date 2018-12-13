@@ -115,42 +115,40 @@
 			<div class="row">
 				<!-- Start .page-header -->
 				<div class="col-lg-6">
-					<div class="panel-success toggle">
-						<!-- Start .panel -->
-						<div class="panel-heading">
-							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="fa fa-area-chart"></i>
-								上行PRB利用率
-							</h4>
-						</div>
-						<div class="panel-body" style="">
-							<div class="row">
-								<div class="col-lg-3">
-									<div class="tile m0 dataLabel">
-										<div class="tile-content text-center clearfix">
-											<div class="spark-number">
-												<i class="fa fa-group"></i>
-											</div>
-											<div class="spark clearfix">
-												<div id="upUsage" class="percent"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-9">
-									<div id="upUsageChart" style="height: 268px"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="panel-success toggle">
+                        <!-- Start .panel -->
+                        <div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
+                            <h4 class="panel-title"style="font-size: 15px;color: white;">
+                                <i class="fa fa-area-chart"></i>上行小区速率
+                            </h4>
+                        </div>
+                        <div class="panel-body" style="">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="tile m0 dataLabel">
+                                        <div class="tile-content text-center clearfix">
+                                            <div class="spark-number">
+                                                <i class="fa fa-group"></i>
+                                            </div>
+                                            <div class="spark clearfix">
+                                                <div id="activeUser" class="percent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div id="activeUserChart" style="height: 268px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="col-lg-6">
 					<div class="panel-success toggle">
 						<!-- Start .panel -->
 						<div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
 							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="fa fa-area-chart"></i>
-								下行PRB利用率
+								<i class="fa fa-area-chart"></i>上行干扰
 							</h4>
 						</div>
 						<div class="panel-body" style="">
@@ -181,64 +179,62 @@
 			<div class="row">
 				<!-- Start .page-header -->
 				<div class="col-lg-6">
-					<div class="panel-success toggle">
-						<!-- Start .panel -->
-						<div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
-							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="fa fa-area-chart"></i>
-								激活用户数
-							</h4>
-						</div>
-						<div class="panel-body" style="">
-							<div class="row">
-								<div class="col-lg-3">
-									<div class="tile m0 dataLabel">
-										<div class="tile-content text-center clearfix">
-											<div class="spark-number">
-												<i class="fa fa-group"></i>
-											</div>
-											<div class="spark clearfix">
-												<div id="activeUser" class="percent"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-9">
-									<div id="activeUserChart" style="height: 268px"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="panel-success toggle">
+                        <!-- Start .panel -->
+                        <div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
+                            <h4 class="panel-title"style="font-size: 15px;color: white;">
+                                <i class="fa fa-area-chart"></i>上行用户平均感知速率
+                            </h4>
+                        </div>
+                        <div class="panel-body" style="">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="tile m0 dataLabel">
+                                        <div class="tile-content text-center clearfix">
+                                            <div class="spark-number">
+                                                <i class="fa fa-group"></i>
+                                            </div>
+                                            <div class="spark clearfix">
+                                                <div id="upUserSense" class="percent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div id="upUserSenseChart" style="height: 268px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="col-lg-6">
-					<div class="panel-success toggle">
-						<!-- Start .panel -->
-						<div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
-							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="fa fa-area-chart"></i>
-								上行用户平均感知速率
-							</h4>
-						</div>
-						<div class="panel-body" style="">
-							<div class="row">
-								<div class="col-lg-3">
-									<div class="tile m0 dataLabel">
-										<div class="tile-content text-center clearfix">
-											<div class="spark-number">
-												<i class="fa fa-group"></i>
-											</div>
-											<div class="spark clearfix">
-												<div id="upUserSense" class="percent"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-9">
-									<div id="upUserSenseChart" style="height: 268px"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="panel-success toggle">
+                        <!-- Start .panel -->
+                        <div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
+                            <h4 class="panel-title"style="font-size: 15px;color: white;">
+                                <i class="fa fa-area-chart"></i>上行MCS
+                            </h4>
+                        </div>
+                        <div class="panel-body" style="">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="tile m0 dataLabel">
+                                        <div class="tile-content text-center clearfix">
+                                            <div class="spark-number">
+                                                <i class="fa fa-group"></i>
+                                            </div>
+                                            <div class="spark clearfix">
+                                                <div id="upMCS" class="percent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div id="UpMCSChart" style="height: 268px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<!-- End .page-header -->
 			</div>
@@ -247,54 +243,35 @@
 			<div class="row">
 				<!-- Start .page-header -->
 				<div class="col-lg-6">
-					<div class="panel-success toggle">
-						<!-- Start .panel -->
-						<div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
-							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="fa fa-area-chart"></i>
-								上行MCS均值
-							</h4>
-						</div>
-						<div class="panel-body" style="">
-							<div class="row">
-								<div class="col-lg-3">
-									<div class="tile m0 dataLabel">
-										<div class="tile-content text-center clearfix">
-											<div class="spark-number">
-												<i class="fa fa-group"></i>
-											</div>
-											<div class="spark clearfix">
-												<div id="upMCS" class="percent"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-9">
-									<div id="UpMCSChart" style="height: 268px"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <div class="panel-success toggle">
+                        <!-- Start .panel -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title"style="font-size: 15px;color: white;">
+                                <i class="fa fa-area-chart"></i>上行PRB利用率
+                            </h4>
+                        </div>
+                        <div class="panel-body" style="">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="tile m0 dataLabel">
+                                        <div class="tile-content text-center clearfix">
+                                            <div class="spark-number">
+                                                <i class="fa fa-group"></i>
+                                            </div>
+                                            <div class="spark clearfix">
+                                                <div id="upUsage" class="percent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div id="upUsageChart" style="height: 268px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="col-lg-6">
-					<div class="panel-success toggle">
-						<!-- Start .panel -->
-						<div class="panel-heading"  style="background-color: #97d3c5; color: white; border-color: #97d3c5">
-							<h4 class="panel-title"style="font-size: 15px;color: white;">
-								<i class="st-connection-full"></i>
-								<spring:message code="mall_shop_visitors"> TOP10</spring:message>
-							</h4>
-						</div>
-						<div class="panel-body" style="">
-							<div class="row">
-								<div class="col-lg-3">
-								</div>
-								<div class="col-lg-9">
-									<div id="mall_floor_visitors" style="height: 268px"></div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 				<!-- End .page-header -->
 			</div>

@@ -58,7 +58,7 @@ public class SvaService extends HttpsService {
                 + "appName:" + sva.getUsername() 
                 + ",ip:" + sva.getIp() 
                 + ",port:" + sva.getPort());
-
+        
         String result = "";
         // 获取token地址
         String url = "https://" + sva.getIp() + ":"
@@ -83,7 +83,7 @@ public class SvaService extends HttpsService {
             
             url = "https://" + sva.getIp() + ":" + sva.getPort()
                         + "/enabler/getwirelessinfo/json/v1.0";
-            content = "{\"CELLID\":\"" + sva.getCellId() + "\"" + "}";
+            content = "{\"CELLID\":" + sva.getCellId() + "}";
             LOG.debug("subscription param:"+content);
             // 获取订阅ID
             Map<String,String> subResult = HttpsService.httpsPost(url, content, charset,"POST", token, svaSSLVersion);
@@ -119,11 +119,11 @@ public class SvaService extends HttpsService {
     	Random random3 = new Random(1);
     	int e = Math.abs(random3.nextInt());
     	
-    	String result = "{\"ucDLPrbRate\":"+a
+    	String result = "{\"ULCellInterference\":"+a
     			+",\"ucULAvgMcs\":"+b
-    			+",\"ucULPrbRate\":"+c
-    			+",\"ulULAvgFeelSpeed\":"+d
-    			+",\"usActiveUserCnt\":"+e+"}";
+    			+",\"ucULRbRate\":"+c
+    			+",\"ulULActiveUserAvgRate\":"+d
+    			+",\"ulULCellTraffic\":"+e+"}";
     	return result;
     }
 }
